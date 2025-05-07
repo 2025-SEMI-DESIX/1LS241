@@ -23,3 +23,4 @@ I. Resolver los siguientes problemas. Las cadenas o entradas
 - El proyecto debe estar escrito en HTML y recibir los valores por input. Las respuestas pueden ser dadas por consola, alerta o HTML.
 - El proyecto debe seguir el patrón de diseño basado en módulos, como lo dado en clases.
 - El proyecto debe ser entregado en git.
+            
