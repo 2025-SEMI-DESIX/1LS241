@@ -3,32 +3,163 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Plantilla App</title>
+  <title>Laboratorio #3 - Frontend Elegante</title>
   <style>
     body {
-        background-color: black;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: linear-gradient(135deg, #1e3a8a, #6d28d9); /* Azul oscuro a Morado */
+        color: #e0e0e0; /* Color de texto claro para contraste */
+    }
+
+    main {
+        background-color: rgba(255, 255, 255, 0.05); /* Fondo semitransparente para el contenido principal */
+        padding: 2rem 3rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        width: 90%;
+        max-width: 800px; /* Ancho máximo para el contenido */
+        backdrop-filter: blur(10px); /* Efecto de desenfoque para el fondo */
+    }
+
+    h1 {
+        text-align: center;
+        color: #ffffff;
+        margin-bottom: 2rem; /* Adjusted for GIF */
+        font-size: 2.5rem;
+    }
+
+    .header-gif {
+        display: block;
+        margin: 0 auto 1rem auto; /* Center and add margin below */
+        max-height: 150px; /* Adjust size as needed */
+        border-radius: 10px; /* Optional: match other rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    section {
+        background-color: rgba(255, 255, 255, 0.08);
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Espacio entre elementos del formulario */
+    }
+
+    label {
+        font-weight: bold;
+        color: #c0c0c0; /* Un gris más claro para las etiquetas */
+    }
+
+    input[type="number"],
+    input[type="text"] {
+        padding: 0.75rem;
+        border: 1px solid #4b5563; /* Borde sutil */
+        border-radius: 5px;
+        background-color: rgba(0, 0, 0, 0.2);
+        color: #e0e0e0;
+        font-size: 1rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input[type="number"]:focus,
+    input[type="text"]:focus {
+        outline: none;
+        border-color: #8b5cf6; /* Morado al enfocar */
+        box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3);
+    }
+
+    button {
+        padding: 0.75rem 1.5rem;
+        background: linear-gradient(135deg, #3b82f6, #8b5cf6); /* Gradiente azul-morado para botones */
         color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: bold;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    button:active {
+        transform: translateY(0px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    span[id^="resp"] {
+        margin-top: 0.5rem;
+        padding: 0.75rem;
+        background-color: rgba(0, 0, 0, 0.3);
+        border-radius: 5px;
+        min-height: 2.5em; /* Altura mínima para que no colapse */
+        display: block; /* Para que ocupe el ancho y padding/margin funcionen bien */
+        word-wrap: break-word; /* Para que el texto largo no rompa el layout */
+        color: #a5b4fc; /* Un color lavanda claro para las respuestas */
+    }
+
+    span[id^="resp"] p {
+        margin: 0;
     }
   </style>
 </head>
 <body>
     <main>
+        <img src="https://cataas.com/cat/gif" alt="Kitten GIF" class="header-gif">
         <h1>Laboratorio #3</h1>
-        <section>
-            <!-- Problema #1 -->
-             <form action="" id="form1">
-                <label for="">Numero</label>
-                <input type="number" id="input1">
-                <button id="calc1">Calcular</button>
+        
+        <section id="problema1">
+            <h2>Problema #1: Palíndromo Binario y Decimal</h2>
+            <form action="" id="form1">
+                <label for="input1">Número:</label>
+                <input type="number" id="input1" name="input1" placeholder="Ingrese un número entero">
+                <button type="submit" id="calc1">Calcular</button>
                 <span id="resp1"></span>
-             </form>
+            </form>
         </section>
-        <section>
+        
+        <section id="problema2">
+            <h2>Problema #2: Contador de Caracteres</h2>
             <form action="" id="form2">
-                <label for="">Cadena: </label>
-                <input type="text" id="input2">
-                <button>Calcular</button>
+                <label for="input2">Cadena:</label>
+                <input type="text" id="input2" name="input2" placeholder="Ingrese una cadena de texto">
+                <button type="submit">Calcular</button>
                 <span id="resp2"></span>
+            </form>
+        </section>
+        
+        <section id="problema3">
+            <h2>Problema #3: Año Bisiesto</h2>
+            <form action="" id="form3">
+                <label for="input3">Año:</label>
+                <input type="number" id="input3" name="input3" placeholder="Ingrese un año (ej: 2024)">
+                <button type="submit">Calcular</button>
+                <span id="resp3"></span>
+            </form>
+        </section>
+        
+        <section id="problema4">
+            <h2>Problema #4: Suma de Primos</h2>
+            <form action="" id="form4">
+                <label for="input4">Número Límite:</label>
+                <input type="number" id="input4" name="input4" placeholder="Ingrese un número entero positivo">
+                <button type="submit">Calcular</button>
+                <span id="resp4"></span>
             </form>
         </section>
     </main>
@@ -40,10 +171,16 @@
             resp1: document.querySelector('#resp1'),
             form2: document.querySelector('#form2'),
             resp2: document.querySelector('#resp2'),
+            form3: document.querySelector('#form3'),
+            resp3: document.querySelector('#resp3'),
+            form4: document.querySelector('#form4'),
+            resp4: document.querySelector('#resp4'),
         },
         init() {
             App.htmlElements.form1.addEventListener('submit', App.methods.onClickCalc1);
             App.htmlElements.form2.addEventListener('submit', App.methods.onClickCalc2);
+            App.htmlElements.form3.addEventListener('submit', App.methods.onClickCalc3);
+            App.htmlElements.form4.addEventListener('submit', App.methods.onClickCalc4);
         },
         methods: {
             onClickCalc1(e) {
@@ -51,27 +188,113 @@
                 const { value } = e.target.elements.input1;
                 const { resp1 } = App.htmlElements;
 
-                const binary = value.toString(2);
-                const isBinaryPalindrome = App.methods.isPalindrome(binary);
-                const isDecimalPalindrome = App.methods.isPalindrome(value);
+                const numberValue = parseInt(value, 10); // Asegurarse de que es un número
+                if (isNaN(numberValue)) {
+                    App.methods.print(resp1, JSON.stringify({ error: "Por favor, ingrese un número válido."}));
+                    return;
+                }
 
-                App.methods.print(resp1, JSON.stringify({ value, isPalindrome: isBinaryPalindrome && isDecimalPalindrome }));
+                const binary = numberValue.toString(2);
+                const isBinaryPalindrome = App.methods.isPalindrome(binary);
+                const isDecimalPalindrome = App.methods.isPalindrome(value); // El valor original del input es string
+
+                App.methods.print(resp1, JSON.stringify({ numero: numberValue, esPalindromoBinario: isBinaryPalindrome, esPalindromoDecimal: isDecimalPalindrome, esPalindromoAmbos: isBinaryPalindrome && isDecimalPalindrome }));
             },
             isPalindrome(value) {
-                return value.split('').reverse().join('') === value;
+                const strValue = String(value); // Asegurar que es string para .split
+                return strValue.split('').reverse().join('') === strValue;
             },
+            /**
+             * Maneja el evento de envío del formulario para contar la frecuencia de caracteres.
+             * @param {Event} e - El evento de envío del formulario.
+             * @return {void}
+             */
             onClickCalc2(e) {
                 e.preventDefault();
                 const { value } = e.target.elements.input2;
                 const { resp2 } = App.htmlElements;
+                
+                // Validar que se haya ingresado una cadena
+                if (!value) {
+                    App.methods.print(resp2, JSON.stringify({ error: "Por favor, ingrese una cadena."}));
+                    return;
+                }
+                
+                // Objeto para almacenar el conteo de caracteres
                 const resp = {};
+                
+                // Contar la frecuencia de cada carácter en la cadena
                 value.split('').forEach(element => {
                     resp[element] = resp[element] ? resp[element] + 1 : 1;
                 });
-                App.methods.print(resp2, JSON.stringify({ value, resp }));
+                
+                // Mostrar el resultado
+                App.methods.print(resp2, JSON.stringify({ cadena: value, conteo: resp }));
             },
-            print(e, text) {
-                e.innerHTML = `<p>${text}</p>`
+            onClickCalc3(e) {
+                e.preventDefault();
+                const { value } = e.target.elements.input3;
+                const { resp3 } = App.htmlElements;
+
+                const yearValue = parseInt(value, 10);
+                if (isNaN(yearValue) || value.length === 0) {
+                     App.methods.print(resp3, JSON.stringify({ error: "Por favor, ingrese un año válido."}));
+                    return;
+                }
+
+                const isLeap = App.methods.isLeapYear(yearValue);
+                App.methods.print(resp3, JSON.stringify({ año: yearValue, esBisiesto: isLeap }));
+            },
+            isLeapYear(year) { // value ya es number aquí
+                return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
+            },
+            onClickCalc4(e) {
+                e.preventDefault();
+                const { value } = e.target.elements.input4;
+                const { resp4 } = App.htmlElements;
+
+                const limit = parseInt(value, 10);
+                 if (isNaN(limit) || limit <= 1) {
+                    App.methods.print(resp4, JSON.stringify({ error: "Por favor, ingrese un número entero mayor que 1."}));
+                    return;
+                }
+
+                const primeNumbers = App.methods.primeNumbersUpTo(limit) ?? [];
+                const sum = primeNumbers.reduce((acc, curr) => acc + curr, 0);
+                App.methods.print(resp4, JSON.stringify({ limite: limit, numerosPrimos: primeNumbers, sumaDePrimos: sum }));
+            },
+            primeNumbersUpTo(limit) { // value ya es number aquí
+                const primeNumbers = [];
+                for (let i = 2; i <= limit; i++) {
+                    if (App.methods.isPrime(i)) {
+                        primeNumbers.push(i);
+                    }
+                }
+                return primeNumbers;
+            },
+            isPrime(num) { // value ya es number aquí
+                if (num <= 1) return false;
+                for (let i = 2; i * i <= num; i++) { // Optimización: chequear hasta la raíz cuadrada
+                    if (num % i === 0) return false;
+                }
+                return true;
+            },
+            print(element, text) { // Renombrado 'e' a 'element' para claridad
+                try {
+                    const parsedJson = JSON.parse(text);
+                    let prettyText = '<dl>';
+                    for (const key in parsedJson) {
+                        if (parsedJson.hasOwnProperty(key)) {
+                            prettyText += `<dt>${key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}:</dt>`; // Formatea la clave
+                            prettyText += `<dd>${JSON.stringify(parsedJson[key], null, 2).replace(/\n/g, '<br>')}</dd>`;
+                        }
+                    }
+                    prettyText += '</dl>';
+                    element.innerHTML = prettyText;
+                } catch (error) {
+                    // Si no es JSON, o hay error al parsear, mostrar como texto plano
+                    element.innerHTML = `<p>${text}</p>`;
+                }
             }
         },
       };

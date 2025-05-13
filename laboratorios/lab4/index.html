@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+    (() => {
+        const App = (() => {
+            const htmlElements = {
+                resp1: document.getElementById('resp1'),
+                resp2: document.getElementById('resp2'),
+                resp3: document.getElementById('resp3'),
+                resp4: document.getElementById('resp4'),
+            }
+
+            return {
+                init() {
+                    console.log('init');
+                },
+                methods: {
+                    print(resp, data) {
+                        console.log(resp, data);
+                    }
+                }
+            }
+        })();
+        App.init()
+    })();
+   </script> 
+</body>
+</html>
