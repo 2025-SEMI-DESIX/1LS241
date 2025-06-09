@@ -3,28 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Laboratorio #4</title>
+    <style>
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            padding: 20px;
+            background-color: black;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }        
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            width: 80%;
+            gap: 1rem;
+        }
+
+        form > label {
+            padding-bottom: 10px;
+        }
+
+        .card {
+            width: 300px;
+            height: 400px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px;
+        }
+
+        .card > .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card > .card-header > .card-header-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #000;
+        }
+
+        .card > .card-body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
 </head>
 <body>
+    <main>
+        <section class="card">
+            <div class="card-header">
+                <h1 class="card-header-title"></h1>
+            </div>
+            <div class="card-body">
+                <form>
+                    <label for="name">Introduzca el número</label>
+                    <input id="number" type="input" min="1" max="20">
+                    <button>Calcular</button>
+                </form>
+            </div>
+        </section>
+        <section class="card" id="resp">
+            <div class="card-header">
+                <h1 class="card-header-title"></h1>
+            </div>
+            <div class="card-body">
+            </div>
+        </section>
+    </main>
    <script>
     (() => {
         const App = (() => {
             const htmlElements = {
-                resp1: document.getElementById('resp1'),
-                resp2: document.getElementById('resp2'),
-                resp3: document.getElementById('resp3'),
-                resp4: document.getElementById('resp4'),
+                form: document.querySelector('form'),
+                resp: document.querySelector('#resp'),
+            }
+
+            const methods = {
+                generateRow(number, i) {
+                    return `
+                        <tr>
+                            <td>${i + 1} x ${number} = ${(i + 1) * number}</td>
+                            <td><button class="btn-borrar">Borrar</button></td>
+                        </tr>
+                    `;
+                },
+                generateTable(number) {
+                    // const emptyArray = Array.from({ length: 10 });
+                    // let tbody = emptyArray.reduce((acc, _, i) => {
+                    //     acc += methods.generateRow(number, i);
+                    //     return acc;
+                    // }, '')
+                    return `
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Número</th>
+                                    <th>Herramientas</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${
+                                    Array.from({ length: 10 }).reduce((acc, _, i) => {
+                                        acc += methods.generateRow(number, i);
+                                        return acc;
+                                    }, '') 
+                                }
+                            </tbody>
+                        </table>
+                    `;
+                },
+                bindEvents(e) {
+                    e.querySelectorAll('.btn-borrar').forEach(e => {
+                        e.addEventListener('click', handlers.onButtonClick)
+                    });
+                }
+            }
+
+            const handlers = {
+                onFormSubmit(e) {
+                    e.preventDefault();
+                    const value = e.target.elements.number.value;
+                    const respBody = document.querySelector('#resp > .card-body');
+                    respBody.innerHTML =methods.generateTable(value);
+                    methods.bindEvents(respBody);
+                },
+                onButtonClick(e) {
+                    const target = e.target.closest('tr');
+                    // const target = e.target.parentElement.parentElement;
+                    target.remove();
+                }
             }
 
             return {
                 init() {
-                    console.log('init');
+                    htmlElements.form.addEventListener('submit', handlers.onFormSubmit);
                 },
-                methods: {
-                    print(resp, data) {
-                        console.log(resp, data);
-                    }
-                }
             }
         })();
         App.init()
