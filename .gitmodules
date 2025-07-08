@@ -1,0 +1,3 @@
+[submodule "por_ejemplo"]
+	path = por_ejemplo
+	url = git@github.com:2025-SEMI-DESIX/semestral.git
